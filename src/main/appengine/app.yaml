@@ -1,6 +1,13 @@
-runtime: java
-env: flex
-
+inbound_services:
+- warmup
+derived_file_type:
+- java_precompiled
+threadsafe: True
+auto_id_policy: default
+api_version: '1.0'
 handlers:
-- url: /.*
-  script: this field is required, but ignored
+- url: (/.*/)
+  static_files: __static__\1index.html
+  upload: __NOT_USED__
+  require_matching_file: True
+  login: optional
